@@ -158,7 +158,7 @@ export default function AdBlocker() {
 
     // Block iframe creation to ad domains
     const originalCreateElement = document.createElement;
-    document.createElement = function(tagName, ...args) {
+    document.createElement = function(tagName: string, ...args: any[]) {
       const element = originalCreateElement.call(this, tagName, ...args);
       if (tagName.toLowerCase() === 'iframe') {
         const originalSetAttribute = element.setAttribute;
