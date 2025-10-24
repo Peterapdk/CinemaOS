@@ -1,0 +1,24 @@
+{
+  "name": "CinemaOS GitHub Integration",
+  "version": "1.0.0",
+  "description": "Automated GitHub operations for CinemaOS development",
+  "scripts": {
+    "github:auth": "./github-automation.sh auth",
+    "github:create": "./github-automation.sh create",
+    "github:push": "./github-automation.sh push",
+    "github:feature": "./github-automation.sh feature",
+    "github:pr": "./github-automation.sh pr",
+    "github:sync": "./github-automation.sh sync",
+    "github:status": "./github-automation.sh status",
+    "github:actions": "./github-automation.sh actions"
+  },
+  "keywords": [
+    "github",
+    "automation",
+    "cinemaos",
+    "nextjs",
+    "typescript"
+  ],
+  "author": "CinemaOS Developer",
+  "license": "MIT"
+}
