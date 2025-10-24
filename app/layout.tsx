@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import './globals.css'
 import AdBlocker from '@/components/AdBlocker'
+import ErrorBoundary from '@/components/ErrorBoundary'
 
 export const metadata: Metadata = {
   title: 'CinemaOS',
@@ -15,8 +16,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <AdBlocker />
-        {children}
+        <ErrorBoundary>
+          <AdBlocker />
+          {children}
+        </ErrorBoundary>
       </body>
     </html>
   )
