@@ -92,3 +92,4 @@ The app includes comprehensive ad blocking that blocks:
 ## License
 
 This project is for educational purposes.
+# CinemaOS Netflix Frontend - Deployment Trigger
