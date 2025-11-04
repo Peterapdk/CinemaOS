@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Header from '@/components/Header';
+import AdBlocker from '@/components/AdBlocker';
 import { Movie } from '@/types/movie';
 
 // Sample data for initial build - will be replaced with TMDB API calls
@@ -21,6 +22,7 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-black">
+      <AdBlocker />
       <Header />
       
       {/* Hero Section */}
