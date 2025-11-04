@@ -183,7 +183,7 @@ For feature requests, please:
 2. Verify environment variables are set
 3. Test API endpoints manually
 4. Use browser DevTools for network issues
-5. Check Docker logs if using containers
+5. Check server logs in Vercel dashboard if deployed
 
 ### Debug Configuration
 Use the provided VS Code debug configurations:
@@ -198,7 +198,7 @@ Releases are managed by maintainers:
 2. Testing and QA on `develop`
 3. Merge `develop` to `main` for release
 4. Create release tags and notes
-5. Update Docker images
+5. Deploy to Vercel automatically
 
 ## Community Guidelines
 

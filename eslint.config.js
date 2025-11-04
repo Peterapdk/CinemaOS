@@ -7,7 +7,7 @@ import reactHooks from 'eslint-plugin-react-hooks'
 export default [
   js.configs.recommended,
   {
-    files: ['**/*.{ts,tsx}'],
+    files: ['**/*.{ts,tsx,js,jsx}'],
     languageOptions: {
       parser: typescriptParser,
       parserOptions: {
@@ -17,6 +17,19 @@ export default [
           jsx: true,
         },
       },
+      globals: {
+        window: 'readonly',
+        document: 'readonly',
+        console: 'readonly',
+        history: 'readonly',
+        URL: 'readonly',
+        fetch: 'readonly',
+        MutationObserver: 'readonly',
+        Node: 'readonly',
+        Element: 'readonly',
+        process: 'readonly',
+        React: 'readonly',
+      },
     },
     plugins: {
       '@typescript-eslint': typescript,
@@ -24,38 +37,11 @@ export default [
       'react-hooks': reactHooks,
     },
     rules: {
-      ...typescript.configs.recommended.rules,
-      ...react.configs.recommended.rules,
-      ...reactHooks.configs.recommended.rules,
       '@typescript-eslint/no-unused-vars': 'error',
       '@typescript-eslint/no-explicit-any': 'warn',
       'react/react-in-jsx-scope': 'off',
       'react/prop-types': 'off',
-    },
-    settings: {
-      react: {
-        version: 'detect',
-      },
-    },
-  },
-  {
-    files: ['**/*.{js,jsx}'],
-    languageOptions: {
-      ecmaVersion: 'latest',
-      sourceType: 'module',
-      ecmaFeatures: {
-        jsx: true,
-      },
-    },
-    plugins: {
-      react,
-      'react-hooks': reactHooks,
-    },
-    rules: {
-      ...react.configs.recommended.rules,
-      ...reactHooks.configs.recommended.rules,
-      'react/react-in-jsx-scope': 'off',
-      'react/prop-types': 'off',
+      'no-undef': 'off', // Turn off no-undef since we're defining globals
     },
     settings: {
       react: {
@@ -70,8 +56,6 @@ export default [
       'out/**',
       'build/**',
       'dist/**',
-      '*.config.js',
-      '*.config.ts',
     ],
   },
 ]

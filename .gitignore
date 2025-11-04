@@ -16,10 +16,8 @@ build/
 .env.test.local
 .env.production.local
 
-# Docker images and containers
-*.tar
-*.tar.gz
-docker-compose.override.yml
+# Vercel
+.vercel
 
 # Logs
 logs

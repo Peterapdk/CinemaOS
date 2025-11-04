@@ -1,6 +1,6 @@
 # CinemaOS
 
-A Netflix-style media library app built with Next.js 14, TypeScript, and Tailwind CSS.
+A Netflix-style media library app built with Next.js 14, TypeScript, and Tailwind CSS, optimized for Vercel deployment.
 
 ## Features
 
@@ -8,7 +8,7 @@ A Netflix-style media library app built with Next.js 14, TypeScript, and Tailwin
 - TMDB API integration for movie data
 - Video streaming with ad blocking
 - Comprehensive ad blocking system
-- Docker deployment ready
+- Vercel-optimized deployment
 
 ## Development Setup
 
@@ -16,7 +16,6 @@ A Netflix-style media library app built with Next.js 14, TypeScript, and Tailwin
 
 - Node.js 18+ 
 - npm or yarn
-- Docker (for production deployment)
 
 ### Installation
 
@@ -45,24 +44,35 @@ A Netflix-style media library app built with Next.js 14, TypeScript, and Tailwin
 
 ## Production Deployment
 
-The project includes a Docker image (`cinemaos.tar`) ready for production deployment.
+This project is optimized for Vercel deployment with zero configuration required.
 
-### Docker Deployment
+### Vercel Deployment
+
+1. **Connect to Vercel:**
+   - Fork this repository
+   - Import to [Vercel Dashboard](https://vercel.com/dashboard)
+   - Connect your GitHub account
+
+2. **Environment Variables:**
+   Set these in Vercel Dashboard > Project Settings > Environment Variables:
+   ```
+   NEXT_PUBLIC_TMDB_API_KEY=your_tmdb_api_key
+   NEXT_PUBLIC_VIDORA_BASE_URL=https://vidora.su
+   NEXT_PUBLIC_SITE_NAME=CinemaOS
+   ```
+
+3. **Deploy:**
+   - Vercel will automatically detect Next.js and deploy
+   - Your site will be live at `https://your-project.vercel.app`
+
+### Local Production Build
 
 ```bash
-# Load the Docker image
-docker load -i cinemaos.tar
+# Build the project
+npm run build
 
-# Run the container
-docker run -d \
-  --name cinemaos \
-  --restart unless-stopped \
-  -p 80:3000 \
-  -e NEXT_PUBLIC_TMDB_API_KEY="6fa37dcf7b0643cde49a5c99dd06f715" \
-  -e NEXT_PUBLIC_VIDORA_BASE_URL="https://vidora.su" \
-  -e NEXT_PUBLIC_SITE_NAME="CinemaOS" \
-  -v /opt/cinemaos/data:/app/data \
-  cinemaos:latest
+# Start production server
+npm start
 ```
 
 ## Project Structure
@@ -92,4 +102,3 @@ The app includes comprehensive ad blocking that blocks:
 ## License
 
 This project is for educational purposes.
-# CinemaOS Netflix Frontend - Deployment Trigger

@@ -146,29 +146,20 @@ npm install
 5. Push to GitHub
 6. Create a pull request
 
-## Docker Development
+## Vercel Deployment
 
-### Build Docker Image
+### Quick Deploy
+1. Connect your GitHub repository to [Vercel](https://vercel.com)
+2. Set environment variables in Vercel dashboard
+3. Deploy automatically on push to main branch
+
+### Local Testing
 ```bash
-docker build -t cinemaos:latest .
-```
+# Build the production version locally
+npm run build
 
-### Run Docker Container
-```bash
-docker run -d \
-  --name cinemaos \
-  -p 3000:3000 \
-  -e NEXT_PUBLIC_TMDB_API_KEY="your_key" \
-  cinemaos:latest
-```
-
-### Debug Docker Container
-```bash
-# View logs
-docker logs cinemaos
-
-# Access container shell
-docker exec -it cinemaos sh
+# Test the production build
+npm start
 ```
 
 ## Additional Resources
@@ -177,3 +168,4 @@ docker exec -it cinemaos sh
 - [TypeScript Documentation](https://www.typescriptlang.org/docs)
 - [Tailwind CSS Documentation](https://tailwindcss.com/docs)
 - [TMDB API Documentation](https://developers.themoviedb.org/3)
+- [Vercel Documentation](https://vercel.com/docs)

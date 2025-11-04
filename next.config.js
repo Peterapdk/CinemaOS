@@ -16,17 +16,21 @@ const nextConfig = {
       },
     ],
     formats: ['image/webp', 'image/avif'],
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    minimumCacheTTL: 60,
   },
-  // Optimize for Vercel deployment
+  // Vercel optimizations
   experimental: {
     optimizeCss: true,
+    optimizePackageImports: ['lucide-react'],
   },
-  // Enable compression for better performance
+  // Performance optimizations
   compress: true,
-  // Optimize bundle size
   poweredByHeader: false,
-  // Enable production optimizations
   productionBrowserSourceMaps: false,
+  // Enable React strict mode for better error detection
+  reactStrictMode: true,
   // Optimize for Vercel's edge network
   async headers() {
     return [
@@ -45,7 +49,24 @@ const nextConfig = {
             key: 'Referrer-Policy',
             value: 'strict-origin-when-cross-origin',
           },
+          {
+            key: 'X-DNS-Prefetch-Control',
+            value: 'on',
+          },
+          {
+            key: 'Strict-Transport-Security',
+            value: 'max-age=63072000; includeSubDomains; preload',
+          },
         ],
+      },
+    ]
+  },
+  // Cache optimization for Vercel
+  async rewrites() {
+    return [
+      {
+        source: '/api/:path*',
+        destination: '/api/:path*',
       },
     ]
   },
