@@ -26,7 +26,7 @@ A Netflix-style media library app built with Next.js 14, TypeScript, and Tailwin
 
 2. Set up environment variables:
    ```bash
-   cp .env.local.example .env.local
+   cp .env.example .env.local
    ```
 
 3. Start development server:
@@ -45,6 +45,8 @@ A Netflix-style media library app built with Next.js 14, TypeScript, and Tailwin
 ## Production Deployment
 
 This project is optimized for Vercel deployment with zero configuration required.
+
+**Live Demo:** [https://cinemarebel.vercel.app](https://cinemarebel.vercel.app)
 
 ### Vercel Deployment
 
