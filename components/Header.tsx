@@ -1,115 +1,38 @@
 'use client';
 
-import { useState } from 'react';
-import Link from 'next/link';
-import { useRouter } from 'next/navigation';
-import { Search, Menu, X } from 'lucide-react';
+import { Search, Menu, User } from 'lucide-react';
 
-export default function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState('');
-  const router = useRouter();
+interface HeaderProps {
+  onSearch: (query: string) => void;
+  onMenuClick: () => void;
+}
 
-  const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (searchQuery.trim()) {
-      router.push(`/search?q=${encodeURIComponent(searchQuery.trim())}`);
-    }
-  };
-
+export default function Header({ onSearch, onMenuClick }: HeaderProps) {
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-sm border-b border-gray-800">
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2">
-            <div className="text-2xl font-bold text-red-600">
-              CinemaOS
-            </div>
-          </Link>
-
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
-            <Link href="/" className="text-white hover:text-red-500 transition-colors">
-              Home
-            </Link>
-            <Link href="/movies" className="text-white hover:text-red-500 transition-colors">
-              Movies
-            </Link>
-            <Link href="/genres" className="text-white hover:text-red-500 transition-colors">
-              Genres
-            </Link>
-            <Link href="/search" className="text-white hover:text-red-500 transition-colors">
-              Search
-            </Link>
-          </nav>
-
-          {/* Search */}
-          <div className="hidden md:flex items-center">
-            <form onSubmit={handleSearch} className="relative">
-              <input
-                type="text"
-                placeholder="Search movies..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="bg-gray-800 text-white px-4 py-2 rounded-lg w-64 focus:outline-none focus:ring-2 focus:ring-red-500"
-              />
-              <button
-                type="submit"
-                className="absolute right-3 top-1/2 transform -translate-y-1/2"
-              >
-                <Search className="w-4 h-4 text-gray-400 hover:text-white transition-colors" />
-              </button>
-            </form>
+    <header className="sticky top-0 z-40 bg-[#1a1a1a] border-b border-[#333333] px-6 py-4">
+      <div className="flex items-center justify-between gap-4">
+        <button 
+          onClick={onMenuClick} 
+          className="lg:hidden p-2 hover:bg-[#2a2a2a] rounded transition-colors"
+        >
+          <Menu size={24} />
+        </button>
+        
+        <div className="flex-1 max-w-md">
+          <div className="flex items-center bg-[#2a2a2a] rounded px-4 py-2">
+            <Search size={20} className="text-gray-400" />
+            <input
+              type="text"
+              placeholder="Search movies..."
+              onChange={(e) => onSearch(e.target.value)}
+              className="ml-2 bg-transparent outline-none w-full text-white placeholder-gray-500"
+            />
           </div>
-
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden text-white"
-          >
-            {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
         </div>
 
-        {/* Mobile Menu */}
-        {isMenuOpen && (
-          <div className="md:hidden py-4 border-t border-gray-800">
-            <nav className="flex flex-col space-y-4">
-              <Link href="/" className="text-white hover:text-red-500 transition-colors">
-                Home
-              </Link>
-              <Link href="/movies" className="text-white hover:text-red-500 transition-colors">
-                Movies
-              </Link>
-              <Link href="/genres" className="text-white hover:text-red-500 transition-colors">
-                Genres
-              </Link>
-              <Link href="/search" className="text-white hover:text-red-500 transition-colors">
-                Search
-              </Link>
-              
-              {/* Mobile Search */}
-              <div className="relative pt-2">
-                <form onSubmit={handleSearch} className="relative">
-                  <input
-                    type="text"
-                    placeholder="Search movies..."
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    className="bg-gray-800 text-white px-4 py-2 rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-red-500"
-                  />
-                  <button
-                    type="submit"
-                    className="absolute right-3 top-1/2 transform -translate-y-1/2"
-                  >
-                    <Search className="w-4 h-4 text-gray-400 hover:text-white transition-colors" />
-                  </button>
-                </form>
-              </div>
-            </nav>
-          </div>
-        )}
+        <button className="p-2 hover:bg-[#2a2a2a] rounded transition-colors">
+          <User size={24} />
+        </button>
       </div>
     </header>
   );
