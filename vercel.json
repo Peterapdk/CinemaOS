@@ -9,12 +9,6 @@
       "maxDuration": 30
     }
   },
-  "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "/api/$1"
-    }
-  ],
   "env": {
     "NEXT_PUBLIC_TMDB_API_KEY": "@tmdb_api_key",
     "NEXT_PUBLIC_APP_URL": "@app_url",
@@ -61,12 +55,6 @@
           "value": "Content-Type, Authorization"
         }
       ]
-    }
-  ],
-  "rewrites": [
-    {
-      "source": "/",
-      "destination": "/"
     }
   ],
   "regions": ["iad1"]
